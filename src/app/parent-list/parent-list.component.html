@@ -1,0 +1,8 @@
+<app-breadcrumb></app-breadcrumb>
+
+<h2>Список родителей</h2>
+<table>
+  <tr *ngFor="let parent of parents" (click)="goToChildren(parent.id)">
+    <td>{{ parent.name }}</td>
+  </tr>
+</table>

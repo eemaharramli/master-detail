@@ -1,0 +1,8 @@
+<app-breadcrumb></app-breadcrumb>
+
+<div *ngIf="child">
+  <h2>Информация о ребёнке</h2>
+  <p><strong>Имя:</strong> {{ child.name }}</p>
+  <p><strong>Возраст:</strong> {{ child.age }} лет</p>
+  <p><strong>ID родителя:</strong> {{ child.parentId }}</p>
+</div>
