@@ -3,7 +3,7 @@ import {NgIf} from '@angular/common';
 import {Child} from '../models/Child';
 import {ActivatedRoute} from '@angular/router';
 import {ChildService} from '../services/child.service';
-import {BreadcrumbComponent} from '../bread-crumb/bread-crumb.component';
+import {BreadcrumbComponent} from '../bread-crumb/breadcrumb.component';
 
 @Component({
   selector: 'app-child-detail',

@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Parent } from '../models/Parent';
-import { Router } from '@angular/router';
-import { NgForOf } from '@angular/common';
+import {Router, RouterModule} from '@angular/router';
+import {CommonModule, NgForOf} from '@angular/common';
 import { ParentService } from '../services/parent.service';
-import { BreadcrumbComponent } from '../bread-crumb/bread-crumb.component';
+import { BreadcrumbComponent } from '../bread-crumb/breadcrumb.component';
 
 @Component({
   selector: 'app-parent-list',
   standalone: true,
   imports: [
     NgForOf,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './parent-list.component.html',
   styleUrls: ['./parent-list.component.css']
