@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
@@ -8,15 +8,19 @@ import { RouterModule } from '@angular/router';
   selector: 'app-breadcrumb',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  templateUrl: './bread-crumb.component.html',
-  styleUrls: ['./bread-crumb.component.css']
+  templateUrl: './breadcrumb.component.html',
+  styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
   breadcrumbs: Array<{ label: string, url: string }> = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
+    this.generateBreadcrumbs(); // сразу при старте
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe(() => {
@@ -34,7 +38,9 @@ export class BreadcrumbComponent implements OnInit {
         url
       };
     });
+
     console.log('Крошки:', this.breadcrumbs);
+    this.cdr.detectChanges(); // <--- форсируем обновление
   }
 
   getLabel(segment: string): string {
